@@ -1,0 +1,160 @@
+1. SELECT * FROM tablenaem;
+
+
+
+	Statement: text that database know as valid command
+	Clause:	   specific task in sql capital letter
+	parameter: list of columns, data type, value pass to clause
+
+2. CREATE TABLE tablename (
+	id INTEGER,
+	name TEXT	  )
+
+
+
+
+3. INSERT INTO tablename ( id, name, age)
+4. VALUES (1. "reza", 22)
+
+
+
+5. ALTER TABLE tablename 
+	ADD COLUMN columnname TEXT;
+
+
+
+6. UPDATE tablename					**edit arow whitch exist**
+	SET columnname = "text"	
+	WHERE id = 4;					**id is row number**
+
+
+
+7. DELETE FROM tablename
+	WHERE columnname IS value;
+
+
+
+8. Constraints		**reject data that not adhere to certain restricyion**
+
+	CREATE TABLE  tablename(
+	ID INTEGER PRIMARY KEY,
+	name TEXT UNIQUE,		**diffrent value for rows**
+	date TEXT NOT NULL,
+	age INTEGER DEFUALT 10)
+
+CLI:  .schema		output create tables we used
+
+
+
+9. SELECT column1, column2 FROM table name;
+
+
+
+10. SELECT column1 AS "column2" FROM tablename;			**rename select column only on resualt**
+
+
+
+11. SELECT DISTINCT column FROM tablename;		**return unique value of columns**
+
+
+
+12. WHERE 		Include rows whitch only condition is true
+	=	!=	>	<	<=	>=
+
+	SELECT * FROM tablename WHERE row>10;
+
+
+
+13. SELECT * FROM tablename WHERE column LIKE 'co--mn';
+
+
+
+14. SELECT * FROM tablename WHERE column LIKE 'A%';
+
+
+
+
+15. SELECT * FROM tablename WHERE columnname IS NOT NULL:
+
+
+
+16. SELECT * FROM tablename WHERE columnname BETWEEN 'A' AND 'B';
+
+
+
+17. SELECT * FROM tablename ORDER BY columnname ASC;  (or DESC)
+
+
+18. SELECT * FROM tablename LIMIT 10;
+
+
+
+19. CASE	Return diffrent output on each condition if-then
+
+	SELECT name,
+		CASE
+			WHEN column > 1 THEN 'great'
+			WHEN column < 1 THEN 'small'
+			ELSE 'Avoid'
+		END AS 'review'
+	FROM tablename;
+
+
+
+20. SELECT COUNT(*) FROM tablename;
+	SUM()	MAX()	MIN()	AVG()	ROUND(columnname, INT)
+
+
+
+21. SELECT columnname, AVG(columnname)
+	FROM tablename
+	WHERE condition
+	GROUP BY columnname
+	ORDER BY column	
+	LIMIT 10;
+
+
+
+22. HAVING	Use for groups instead of where
+	
+	SELECT column, column1
+		FROM table
+		GROUP BY 1, 2
+		HAVING COUNT(column1)>2;
+
+
+23. SELECT STRFtime('%H', column) FROM tablename;
+
+
+
+24.  SELECT * FROM table1
+	JOIN table 2
+	ON table1.column = table2.column
+
+
+
+25. SELECT * FROM table1 	
+	LEFT JOIN table 2			**only select left table**
+	ON table2.column = table2.column	**whitch is equal**
+	WHERE table2.column IS NULL;		**show the not selected**
+
+
+
+26. SELECT * FROM table1 			**join all the rows of 2 table**
+	CROSS JOIN table2
+
+
+
+27. SELECT * FROM table1
+		UNION				**put data togather & whitch on top columns should be same**
+	SELECT * FROM table2;
+
+
+
+28. WITH defaultname AS)			**with id use to write any temprory table we want**
+		SELECT ....
+		.....
+		.....
+		.....
+		.....)
+    SELECT * .........	

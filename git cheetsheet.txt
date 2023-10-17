@@ -1,0 +1,69 @@
+1. git init						(initialize: (1) working directory = add, delete, modify)
+2. git status						( (2) staging area 
+3. git add filename						files ready to commite)
+4. git diff						(differnce add to file)
+5. git commit						( premently store in repository:  (3) repository = saved version)
+6. -m 							( comment use for commit)
+7. git log						(show version of project)
+	git log -s "keyword"   				( search in log for keyword)
+8. git show HEAD					(display log & all changes in commit)
+9. git checkout HEAD (or --) file name			(discard last changes)
+10. git reset HEAD filename				(remove restore last changes)
+11. git reset commit_SHA				(commit_SHA is 7 digit of pervious commit)
+12. git stash 						(stash current project to work on another)
+13. git stash pop					(pop the stashed project to work)
+14. git commit --amend					(overwrite last commit, amend means correction)
+15. git commit --amend --no-edit			(overwrite with last comment)
+16. git config --global alias.br "branch"		(use br for branches comment)
+17. git branche						(show current branch)
+18. git branch newbranch				(creat new branch)
+	git checkout branchname				(switch to branch)
+19. git merge branchname				(update main branch "first switch to main")
+20. git branch -D branchname				(delete branch completly)
+21. git clone remotename clonename 			(make clone from remote to your pc)
+22. git remote -v					(list of git project remote)
+23. git fetch						(check if your file up to date)
+24. git push origin branchname				(send to origin master branch)
+25. git log -graph --decorate --online --all		(full image of commits made in branches)
+26. git remote add upstream HTTPScode			(make our fork update after this)
+27. git fetch upstrean
+
+
+
+
+CLI
+
+gh --version
+gh --help
+gh auth login
+gh issue create --title "title" --body "description"
+gh issue status
+gh pr creat 		(create pull request)
+gh pr merge
+
+
+
+
+
+
+
+
+Markdown text
+
+Headings:		#heading1	##heading2	###heading3     so on
+
+*italic*	**bold**
+
+list:		*,+,-		*list1		ordered list:	1.list
+				*list2				2.list
+
+[link text](the link)	>comment link quats
+
+seperate line: 		---
+
+image:		![alt](link)
+
+
+'''
+code
+'''

@@ -1,0 +1,56 @@
+1. echo "Hello Command Line" >> hello_cli.txt  *create the txt*
+2. cat hello_cli.txt  *print the text*
+3. pwd(print working directory) 
+4. touch keyboard.txt *create a file*
+5. ls -a *lists all contents*
+	ls -l *lists all contents long format*
+	ls -t *orders files and directories by time*
+	ls -alt *all above togather
+6.  cat action/batman.txt  *outputs the contents of a specified file*
+7.  cp the-office.txt slapstick/the-office-us.txt *rename and copy to slapstick dir*
+8.  mv file_original.txt file_renamed.txt *use for move or rename file*
+9.  rm -r unwanted_directory *delete a directory and all of its child*
+10. echo "Hello World" > hello.txt  *type hello world in hello.txt*
+11. cat deserts.txt > forests.txt  *overwrite text*
+12. cat deserts.txt >> forests.txt  *add text to *
+13. cat volcanoes.txt | wc | cat > count.txt  *wc: outputs the number of lines, words, and characters. then type it in count.txt* 
+14. cat glaciers.txt | sort > sorted-glaciers.txt  *output of sort alphabetically is redirected to a new file*
+15. sort deserts.txt | uniq (uniq deserts.txt)  *It filters out adjacent, duplicate lines in a file*
+16. grep -i America continents.txt  *stands for “global regular expression print.” It searches files for lines that match a pattern and then returns the results. -i enables casae sensetive*
+17. grep -Rl Arctic /home/ccuser/workspace/geography   *grep -R searches all files in a directory and outputs filenames and lines containing matched results. grep -Rl searches all files in a directory and outputs only filenames with matched results*
+18. sed -i 's/snow/rain/g' forests.txt  *stands for stream editor.It is similar to “find and replace.” s: stands for “substitution.” g expression, meaning “global.” In order to rewrite the actual file, we need to use -i*
+19. Customization with .bash_profile :
+	nano .bash_profile
+	source .bash_profile  *To activate the changes made in .bash_profile*
+	alias pd="pwd"
+20. Environment Variables:
+	export USER="Jane Doe" *change the user name. export makes the variable to be available to all child sessions*
+	echo $USER  *show user name*
+	export PS1=">> "    *efault command prompt from $ to >>*
+	echo $HOME  *show home directory*
+	echo $PATH   *lists the following directories, separated by :*
+	env | grep PS1  (env)   *returns a list of the environment variables for the current user.*
+	 
+
+
+
+*windows commands*
+
+https://cmdref.net/os/windows/command/index.html#windows_commands_cheat_sheet
+
+Mac/Linux Command	Windows Command
+
+ls			dir
+pwd			chdir
+cd			cd
+mkdir			md
+touch   		echo "hello world" > hello.txt
+clear 			cls
+cat			type
+cp			copy
+mv			ren
+rm			del
+grep			find
+env			set
+export VAR=value	setx variable value (administrator mode)
+echo $VAR		echo %VAR%

@@ -1,0 +1,431 @@
+#Function
+
+def myfunction(var1, var2, var3):
+	default code like 
+	print(1, 2, free)
+
+
+
+
+---
+#Boolean
+
+	bool_two = True
+	print(type(bool_two))
+
+	//resault:  <class 'bool'>
+
+
+
+
+---
+#If Statement
+
+if weekday:
+  print("wake up at 6:30")
+else:
+  print("sleep in")
+
+
+
+
+---
+#Else If
+
+if donation >= 1000:
+  print("You've achieved platinum status")
+elif donation >= 500:
+  print("You've achieved gold donor status")
+elif donation >= 100:
+  print("You've achieved silver donor status")
+
+
+
+---
+#There are four collection data types in the Python programming language:
+
+-List is a collection which is ordered and changeable. Allows duplicate members.
+-Tuple is a collection which is ordered and unchangeable. Allows duplicate members.
+-Set is a collection which is unordered, unchangeable, and unindexed. No duplicate members.
+-Dictionary is a collection which is ordered and changeable. No duplicate members.
+
+
+
+---
+#List
+
+
+my_list = ["Mia", 27, False]
+
+
+##append
+mylist.append("End")								**ad an element at end of list**
+my_list.append(('The Broken Column', 1944))
+
+
+###add more to list +
+orders = ["daisy", "buttercup", "snapdragon", "gardenia", "lily"]
+new_orders = orders + ["lilac", "iris"]						**add 2 element to array**
+
+
+my_list[-1]									**call 3th (last) element of array**
+
+
+mylist[1] = "22"								**change the 2nd element to 22**
+
+
+##remove
+my_list.remove(flase)
+
+
+##Select
+my_list = [
+	["Mia", 27],
+	["ali", 25]
+]
+my_list[[0][1]									**it returns 27**
+
+
+##remove an index
+my_list[1].remove(25)								**use remove in 2d lists**
+
+
+##merg two list
+Combine_list = zip(my_list1, my_list2)						**when we want put 2 list togather use zip but it saves as file**
+Combine_list_as_array = list(Combine_list)					**list() will make list of that save file**
+
+
+##.insert()
+my_list.insert(2, "amin")
+
+
+##.pop()										**remove elements at a specific index, without an index will remove whatever the last element of the list is*
+removed = my_list.pop(2)
+
+
+## range()										**put a range of numbers from 0 to ...**
+my_list = range(10)
+print(list(my_list))									**to see you should use list and this output [0,1,...,8,9] **
+my_list = range(4, 9)									**[4, 5, 6, 7, 8] **
+my_list = range(2, 9, 2)								**third number represent how to count [2, 4, 6, 8]**
+my list = list(range(1, 8))
+
+
+##len()
+len(my_list)
+
+
+##Slicing Lists
+slice_list = my-list[2:4]
+my_list[:n]										**select the first n elements of a list**
+my_list[-n:]										**slice the last n elements in a list**
+my_list[:-n]										**slice all but the last element from the list**
+
+
+## .count()
+my_list.count(22)									**count the 22 s on list**
+
+
+##  .sort()
+my_list.sort()
+my_list.sort(reverse=True)
+new_list = sorted(my_list)								**can put on var and dosent change the main list**
+
+
+
+---
+#For
+for i in my_list:
+  print(i)
+
+
+---
+##range
+for i in range(5):									**create arbitrary collections of any length**
+  print(hi)
+
+
+---
+#while
+count = 10
+while count >= 0:
+  print(count)
+  count -= 1
+
+
+---
+##break 
+for i in my_list:
+	if i == var22
+		print("end")
+		break
+
+
+---
+##continue										**it will skip the selected and continue the cod
+for i in my_list:
+  if i < 22:
+    continue
+  print(i)
+
+
+---
+##inner conditions
+
+###for
+for i in ingredients: print(i)
+
+
+numbers = [2, -1, 79, 33, -45]
+doubled = [num * 2 for num in numbers]
+
+
+###count
+count = 0
+while count <= 3: print(count); count += 1
+
+
+###for and if
+heights = [161, 164, 156, 144, 158, 170, 163, 163, 157]
+can_ride_coaster = [height for height in heights if height > 161]
+print(can_ride_coaster)
+
+
+---
+#jupiter help
+tab to complete
+? to see var details
+tab + shift to see option that forgot
+%debug     \00/
+
+fn + m to change the current cell to Markdown, y to change it back to code.
+Split the current cell into two: Ctrl + Shift +
+Find and replace on your code: Esc + f
+Toggle cell output: Esc + O
+
+
+##markdown
+`moonspace`
+***  line break
+![title](img/picture.png)
+[link text](http://url)
+[section title](#section-title)		it gets the heading directly
+
+https://www.codecademy.com/journeys/data-scientist-aly/paths/dsalycj-22-data-science-foundations/tracks/dsalycj-22-python-fundamentals-for-data-science-part-i/modules/dsf-getting-started-off-platform-2df5d44b-11ab-4dc8-9460-819467adc294/articles/getting-more-out-of-jupyter-notebook
+
+
+---
+# .text
+print(r.text)											**the .text attribute. The text attribute turns the data into a string.**
+
+
+---
+#requests
+import requests
+r = requests.get('https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E&for=state:*')
+
+
+---
+#.json()
+print(r.json())											**the .json() method that can automatically decode JSON data into the appropriate Python object.**
+
+
+---
+#convert data from JSON to CSV
+
+//To convert from JSON to CSV, we want to write each sublist as a comma-separated row of data to file. This bit of code is a little complicated. We will use the writerows() method from the csv library:
+
+
+import csv
+with open('census.csv', mode='w', newline='') as file:
+  writer = csv.writer(file)
+  writer.writerows(r.json())
+
+
+//We first make a variable and call it file. Then we use open() to open a file, since we are going to write that file, we open it with mode='w' for writing mode. The newline='' ensures that newlines are always interpreted correctly.
+//Next, we use the writer() function from the csv library to make a writer object (don’t worry about what this is right now). We then use the writerows() method to write each row of data into comma-separated
+
+
+---
+#pandas
+
+##.read_csv()											**to read the CSV data into a DataFrame object**
+pandas.read_csv("census.csv")
+
+
+##.head()											**preview the first few rows of the DataFrame**
+print(census_df.head())
+
+
+##.columns											**to rename the column headings if needed**
+census_df.columns = ['name', 'total_commuters', 'state']
+
+
+---
+#numpy
+
+##random.binomial()
+print(numpy.random.binomial(n = 1, p = 0.5, size=2000))						**how many trials we want to simulate (n) and the probability of ‘success’ in a single trial (p), and how many experiments to run**
+
+
+---
+#String Slicing
+last_chars = my_string[length-4:]
+
+"theycallme\"crazy\"91"    									**\ before " and before 2nd one will fix string eroor :/**
+
+
+---
+#in
+print("e" in "blueberry" and not "e" in "carrot")
+ => True
+
+
+---
+# letter functions
+
+##letter_check
+def letter_check (word, letter):
+  for char in word:
+    if char == letter:
+      return True
+  return False
+
+
+##common letters
+def common_letters(string_one, string_two): 
+  common = []
+  for letter in string_one:
+    if (letter in string_two) and not (letter in common):
+      common.append(letter)
+  print(common)
+
+
+---
+#String methods 
+
+.lower()
+.upper()
+.title()											**first letter of each word is capitalized**
+.split()											**takes one argument, and returns a list of substrings found between the given argument**	
+.split('n')											*split string by n**	
+.split(\n) 											** will allow us to split a multi-line string by line breaks**
+.split(\t)											**will allow us to split a string by tabs**
+.join()												**my_munequita = ['My', 'Spanish', 'Harlem', 'Mona', 'Lisa']  ==> print(' '.join(my_munequita)) ==> 'My Spanish Harlem Mona Lisa'**
+'\n'.join(X)											**using a newline \n as the delimiter**
+.strip()											**cleaning strings from spaces**
+.strip('!')											**cleaning strings from !**
+.replace()											**string_name.replace(substring_being_replaced, new_substring)**
+.find()												**my_string.find('22')**
+.format()											**takes variables as an argument and includes them in the string that it is run on. You include {} marks as placeholders for where those variables will be imported**
+	def favorite_song_statement(song, artist):
+		return "My favorite song is {} by {}.".format(song, artist)			**print(favorite_song_statement("Smooth", "Santana")) => "My favorite song is Smooth by Santana."**
+
+	def favorite_song_statement(song, artist):
+	  return "My favorite song is {song} by {artist}.".format(song=song, artist=artist)	**make sure that your variables appeared as arguments in the same order that you wanted them to appear in the string**
+
+
+---
+#dictionaries
+menu = {"key": value, 20: 24, software design": ["Aaron", "Delila", "Samson"]}
+
+##add key-value or change value for a key
+my_dictionary[key] = value
+
+##Add Multiple Keys
+my_dictionary.update({"key": value, 20: 24})
+
+##Comprehensions
+students = {key:value for key, value in zip(names, heights)}					**\00/**
+
+##Get a Key
+my_dictionary.get(key, 0)									**it returns the value or define value 0 if we dont returns none**
+
+##Delete a Key
+my_dictionary.pop(key, 0)									**it returns the value or define value and delete the key and value**
+
+##Get All Keys
+all = my_dictionary.keys()
+
+##Get All Values
+all = my_dictunary.values()
+
+##Get All
+all = my_dictunary.items()
+
+for company, value in biggest_brands.items():
+ print(company + " has a value of " + str(value) + " billion dollars. ")
+
+
+print("x" in my_dictunary)									**check if it exist and return true or false**
+
+
+
+---
+#Reading a file 
+
+#.read()
+with open("my.txt") as text_file:
+  text_data = text_file.read()
+print(text_data)
+
+
+
+##.readlines()
+with open("just_the_first.txt") as first_line_doc:
+  first_line = first_line_doc.readline()
+print(first_line)
+
+
+with open("how_many_lines.txt") as lines_doc:
+  for line in lines_doc.readlines():
+    print(line)
+
+
+##.write("Hi!")
+with open("my.txt", "w") as my_doc:
+  my_doc.write("hi!")
+
+
+##Appending to end of file
+with open("my.txt", "a") as my_file:
+  my_file.write("“There\n”")
+
+
+##Reading a CSV
+import csv										**print all address rows**
+with open('my.csv', newline='') as my_csv:
+  my_reader = csv.DictReader(my_csv, delimiter=';')
+  for row in my_reader:
+    print(row['Address'])
+
+
+import csv										**get all cool fact rows**
+with open("my.csv") as my_csv_file:
+  my_csv_dict = csv.DictReader(my_csv_file)
+  for row in my_csv_dict:
+    print(row["Cool Fact"])
+
+
+##Writing a CSV File
+import csv
+with open('output.csv', 'w') as output_csv:						**open new file name with w argument,with csv.DictWriter() write csv with 2 element and then write fileds header therefor we use loop to import fields**
+  fields = ['name', 'userid', 'is_admin']
+  output_writer = csv.DictWriter(output_csv, fieldnames=fields)
+  output_writer.writeheader()
+  for item in big_list:
+    output_writer.writerow(item)
+
+
+##Reading a JSON File json.load()
+import json
+with open("my.json") as my_json:
+  message = json.load(my_json)
+
+print(message['text'])
+
+
+##write a json file json.dump()
+import json
+with open("my.json", 'w') as my_json:
+  json.dump(my_dict, my_json)
