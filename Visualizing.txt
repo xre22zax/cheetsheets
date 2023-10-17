@@ -211,6 +211,22 @@ plt.show()
 ///
 
 
+---
+#countplot
+.countplot() only take on variable
+
+import seaborn as sns
+sns.countplot(flu_results["Results"])
+plt.show()
+
+##order for nominal data
+sns.countplot(df["victory_status"], order=df["victory_status"].value_counts(ascending=True).index)
+
+
+##order for ordinal data
+sns.countplot(df["Grade Level"], order=["First Year", "Second Year", "Third Year", "Fourth Year"])
+
+
 
 ---
 ## Pie chart for borough
@@ -235,6 +251,13 @@ plt.pie(budget_data, labels=budget_categories)		==> on the chart
 or
 
 plt.pie(budget_data,labels=budget_categories, autopct='%0.1f%%')		==> means 1 decimal show on chart with % also '%d%%' — rounded to the nearest int with %
+
+
+
+wedge_sizes = student_grades["Proportions"]
+grade_labels = student_grades["Grades"]
+plt.pie(wedge_sizes, labels = grade_labels)
+plt.axis('equal')
 
 
 ---
