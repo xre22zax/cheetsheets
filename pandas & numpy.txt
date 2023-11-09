@@ -475,3 +475,35 @@ print(X[0:5])
 ##coefficient
 print(rentals.groupby('borough').mean())
 
+
+---
+#data cleaning
+
+###mydf.shape			==> .shape method in pandas identifies the number of rows and columns in our dataset as (rows, columns)
+
+###drop_duplicates()		==> .drop_duplicates() function removes duplicate rows
+restaurants = restaurants.drop_duplicates()
+
+### map()			==> map() applies the str.lower() function to each of the columns in our dataset to convert the column names to all lowercase 
+restaurants.columns = map(str.lower, restaurants.columns)
+
+## rename()			==> the key refers to the original column name and the value refers to the new column name {'oldname1': 'newname1', 'oldname2': 'newname2'}
+restaurants = restaurants.rename({'dba': 'name', 'cuisine description': 'cuisine'}, axis=1)
+
+##isna()			==> counts the number of missing values in each column 
+restaurants.isna().sum() 
+
+## where()			==> .where() function replaces latitude values less than 40 with NaN values
+restaurants['latitude'] = restaurants['latitude'].where(restaurants['latitude'] < 40, np.nan) 
+
+###pd.crosstab()		==> computes the frequency of two or more variables
+!!!
+
+###str.lstrip()			==> remove the prefixes
+restaurants['url'] = restaurants['url'].str.lstrip('https://') 
+
+
+###melt()			==> turn the current values in the column headers into row values
+!!!
+
+
