@@ -1,0 +1,145 @@
+# EDA analysis
+
+1. provide me the descriptive statistics for information in this field and comments on these descriptive statics
+	(search every column and give mean,count,etc )
+
+2. invastigate outliers in sheet (maybe make some graphs)
+
+3.perform correlation analysis on sheets and formulate hypothesis, suggest further data analysis that could cariied out with this data
+	(intericate relationships between variables and connections)
+
+## 5w & 1h framework
+- what is the task
+- where?
+- why? analysis aim to provide initial understandinf and preliminary insights from dataset
+- whitch are the details we want ai focos on 
+- who?
+- how we want ai to conduct the analysis? 
+
+4. conduct a comperhensive exploratory data analysis (EDA) on the ........ Dataset. 
+   Highlight any territorial trends or patterns evident in the dataset. 
+   The intention behind this analysis is to delve deeper into the dataset,revealing its potential for future detailed examinations.
+   while analyzing, be on the lookout for any dataset inconsistencies or peculiarities ans approach the task with rigor and scrutiny of a seasoned data analysis.
+   for a holistic understandinf, ensure to integrate information from sheets using ..... field as a connecting point.
+
+# Preprossessing data - dealing with inconsitant data
+
+1. in this file you will find column named "......", unify all enteries this column for following variables (...,...,...), correct and unify the diffrent ways in which these names written.
+	(itll find diffrent types of inputs and turn it to var you gave it)
+
+2. sense check the data in this file and try to see if there are any errors or inconsistencies
+   'or' can you find inconsistencies between diffrent columns
+	(check for diffrent type of inconsistencies such as date or city mistmatch and etc.)
+
+3. are there any issues in terms of inconsistency errors and data mistakes in this dataset
+	(like looking for duplicates)
+
+4. in this dataset we have issues because there is discrepancy between units of mesurments (cm vs inch, etc) , unify all measurments to cm
+	(help with unit discrepancy)
+
+5. in this spreadsheet i have sheet where both country and city data are consolidated into a single cell, please seprate that data into seprate columns
+	(when the column dosen's use unique delimiter but doesnt work ver well)
+
+
+# Preprocess data - organize messy data
+
+1. Are you able to understand this data? the way it is organized and what it shown?
+   would you be able to organize the data better with detailes? please provide me an excel file for download
+	( when have messy spreadsheet that have merge column or unorganized datas)
+
+2. In this excel you will find two sheets 'students grafes' and 'classification'. the 'student grades' sheet contain grades ranging from 1 to 100 for various students, while the 'classification' sheet provides a grading system.
+   Your task is to use grading system to classify each students grade and fill in the corresponding result in the 'Result' column of 'student grades' sheet.
+	( you can provide a grading or some else system so ai fill column with  corresponding result)
+
+3. within this sheet you will find two important columns '...' & '...'. 
+   i need you to  use this data to compile a list of all '...' sorted by corresponding '...'.
+   after youve created the list, populate it in new sheet names '....' on same spreadsheet.
+	( yoou can sort diffrent entries of two or more columns)
+
+
+# Preprocess data - working with functions
+
+1. Help me analyze the data in provided excel, i need to calculate total sales per each country in new sheet.
+   which are the excel formulas allow me to do that? suggest formulas that work for entire 'database' sheet.
+   also, i need one formula that can be pasted in all cells of the table to be filed in that new sheet
+	(get a formula you desire for excel file)
+
+2. in column ... of spreadsheet we have several emails. could you please look up in the database and retrive the respective city where a person was based?
+   also can you use diffrent formula so i dont have to rearrange my columns?
+	(Look up and fill the values we want from dataset)
+
+3. could you use information provided in the 'database' sheet to fill in the table in the .... sheet
+   in the .... sheet we want to have top 5 highest selling agents
+	(for get to 5 or min of any dat sets)
+
+4. can you help me design an excel formula that i can use in the '....' column of the table
+   this column should be filled with word 'yes' if the product in the same row is either a car or a truck and its commpletly sold out
+	(fill the new column with logic from other columns)
+
+
+# Preprocess data - clean text data
+
+1. concider 'contact name' column. the names are inverted, instead of doe john we want to have john doe. and so on for all the names on column
+	(text change,if all follows simple formats if its wrong)
+
+2. There are some issues related to training and leading spaces in this file. could you help me fix that
+	(cleaning spaces out of values)
+
+3. In '...' column we have some issues related to letter capitalization in that column, can you help me withthat?
+	(fiz capitalize letter issues)
+
+4. in column '...' of this file, we have entries in diffrent alnguages. can we please have them in english?
+	(translate diffrent value ifrom other languages to en)
+
+5. In this file weve a sheet with company full names  and abbrivations. the database sheet contains abbrivated company names.
+   can we replace these abbriviated company names in the database sheet with the respective full names?
+	(mass replace values of a column)
+
+6. please 'Student Id' and 'Student name' column in the provided excel file. i need a list that contain unique enteries based on these two columns.
+   if a student has the same name but diffrent id, this should be concider as unique entries 
+	(search for duplicate rows and give us the unique values)
+
+7. Can you help me identify all the unique names from two specific columns in my dataset? 
+   columns are named '...' and '...' . i would like a single list that includes unique names from both columns
+	( combine 2 columns by unique values)
+
+
+# preprocess data - dates and time data
+
+1. Can you please provide me the name of the day and month of the dates in column '...' of this file
+   please fill in the respective day and month columns right next to given column for each date.
+	(seprates dates and print out  day names, mounths names)
+
+2. in this spreadsheets, we have a list with the hours worked by several consultants. can you please convert the hours worked in column '...' to decimal figures?
+	(convert hours to decimal)
+
+3. calculate the age of each person in this file and represent it as an years, month, days format. today date is '.....'
+	(turn birth day to age)
+
+4. i have a table with columns A-F and i need to organize it chronologically based on the 'Order recived date' column, whitch is one of the columns in the table
+   can you help me sort the entire table in ascendinf order according to the dates in the specific columns?
+	(sort the dataset by exact date)
+
+
+# practical example
+
+1. can you suggest several preprocessing steps that would allow me to perform meaningful dat analysis with this file and extract relevent information from it?
+
+2. i require your assistance in preprocessing dataset for subsequent analysis.
+   I need you to perform this preprocessing exercise as a seasoned and very capable data analysis.
+   Here's a breakdown of tasks i'd like you to perform:
+
+   (1) Handle missing values:
+	- drop the scr columns in '...' sheet
+	- for '....' column, replace missing values with True
+   (2) Feature engineering:
+	- Calculate the duration (in days)between when a student joined the platform and their last login.
+	   Store this in a new column named '...'
+	- In this dataset, classify the country column by their respective continents
+	   add this classification in a new column adjacent to 'country'
+	- Extract the year, month and day of week from both the joined and last login columns
+	   create a new columns for these extracted pieces of data
+
+   (3) for all the columns such as ('...', '...', '...') with monetary data, devide the values by 100 to have them in dollar and cent format
+
+
