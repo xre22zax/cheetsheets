@@ -78,6 +78,11 @@ sns.boxplot(data=my_df, x= 'address', y='col2')
 plt.show()
 
 
+plt.boxplot([dataset_one, dataset_two])
+plt.show()
+
+ex:
+plt.boxplot([two_thousand, two_thousand_one, two_thousand_two], labels = ["2000 Songs", "2001 Songs", "2002 Songs"])
 
 
 ---
@@ -102,6 +107,8 @@ plt.show()
 !plt.hist(dataset, range=(66,69), bins=40)
 !histtype='step'    to draw just the outline of a histogram
 !density=True		divides the height of each column by a constant 
+!plt.tight_layout()	prevent the labels from overlapping with the graphs 
+!plt.axvline()
 
 
 ex: plt.hist(sales_times1, range=(66,69), bins=20, density=True, alpha=0.4, histtype='step', linewidth=2)

@@ -90,9 +90,9 @@ df = df.fillna(value={"column":df.column.mean(), "num_guests":0})
 data.dropna(inplace=True)
 
 ##Pairwise Deletion
-data.dropna(subset=['Height','Education'], #only looks at these two columns
-            inplace=True, #removes the rows and keeps the data variable
-            how='any') #removes data with missing data in either field
+data.dropna(subset=['Height','Education'], 	#only looks at these two columns
+            inplace=True, 			#removes the rows and keeps the data variable
+            how='any') 				#removes data with missing data in either field
 
 
 ---
