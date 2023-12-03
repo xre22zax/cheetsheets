@@ -265,6 +265,7 @@ wedge_sizes = student_grades["Proportions"]
 grade_labels = student_grades["Grades"]
 plt.pie(wedge_sizes, labels = grade_labels)
 plt.axis('equal')
+plt.tight_layout()
 
 
 ---

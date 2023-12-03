@@ -3,3 +3,9 @@
 -find quartiles		==> np.quantile(dataset, [0.25, 0.5, 0.75] )
 -Quantile range		==> iqr(dataset)  or  interquartile_range = q3-q1
 - median		==> The central tendency of the data
+- Data Centering	==> subtract mean from values, mean is 0
+- Data Scaling		==> Min-Max Normalization, Standardization
+- Binning Numerical Data
+- Combining Categorical Data
+- Log Transformation (skewed data )
+

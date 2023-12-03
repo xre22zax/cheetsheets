@@ -507,3 +507,31 @@ restaurants['url'] = restaurants['url'].str.lstrip('https://')
 !!!
 
 
+
+---
+
+# Discretizing Numerical
+
+
+## Binning Numerical Data
+
+student_ages = dance_class['Age'] 								==> Store the ages
+bins = [20, 30, 40, 50, 60, 70]									==> Store the boundaries
+age_labels = ['Young Adult', 'Adult', 'Middle Aged', 'Middle-Older Age', 'Senior']		==> Store the labels for our bins
+dance_class['binned_age'] = pd.cut(dance_class['Age'], bins, labels = age_labels)		==> Bin the values of the 'Age' column and specify the labels 
+
+
+## Log Transformation (skewed data )			==> data.skew()
+
+log_data = np.log(data)					==> for arrays
+
+
+from sklearn.preprocessing import PowerTransformer
+log_transform = PowerTransformer()
+log_transform.fit_transform(data)			==> dosent work on left skewed (skeweness = -1 ) and zero or negative numbers
+
+---
+
+# sort by column
+
+sorted_data = dataframe_name.sort_values(by=['Column Name'])

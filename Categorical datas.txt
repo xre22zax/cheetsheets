@@ -1,0 +1,73 @@
+#Nominal Categories
+
+
+## using value count 
+
+counts = df['marital.status'].value_counts()
+
+modal_cat = counts.index[0]		==>get most repeated
+
+---
+
+#Ordinal Categorical
+
+## Central Tendency for ordinal
+
+print(list(df['education'].unique()))
+
+'''
+correct_order = ['Preschool', '1st-4th', '5th-6th', '7th-8th', '9th', '10th', '11th', '12th', 'HS-grad', 'Some-college', 'Assoc-voc', 'Assoc-acdm', 'Bachelors', 'Masters', 'Prof-school', 'Doctorate']
+
+df['education'] = pd.Categorical(df['education'], correct_order, ordered=True)			==> order by urself
+
+'''
+
+median_index = np.median(df['education'].cat.codes)		==> converts the categories to numbers
+median_category = correct_order[int(median_index)]		==> show what that number is
+
+
+##instead of mean and variance, proportion of the data within a range, or percentiles/quantiles
+tenth_perc_ind = np.percentile(df['education'].cat.codes, 10)
+tenth_perc_cat = correct_order[int(tenth_perc_ind)]
+print(tenth_perc_cat) # output: 11th					==> get the 10 per of categorical column by turning them into number
+ 
+nintieth_perc_ind = np.percentile(df['education'].cat.codes, 90)
+nintieth_perc_cat = correct_order[int(nintieth_perc_ind)]
+print(nintieth_perc_cat): #output: Bachelors				==> see what that number means on our ordered data
+
+
+##Table of Proportions
+df['education'].value_counts()/len(df['education'])
+or
+df['education'].value_counts(dropna = False, normalize = True).head()
+
+
+---
+
+
+# Binary Categorical Variables
+np.sum(df['income_>50K'])
+np.mean(df['income_>50K'])
+
+ex: 
+
+'''
+
+living_frequency = np.sum(nyc_trees.status == 'Alive')
+living_proportion = (nyc_trees.status == 'Alive').mean()
+
+or 
+
+giant_proportion = np.sum(nyc_trees.trunk_diam > 30)
+giant_frequency = (nyc_trees.trunk_diam > 30).mean()
+
+'''
+
+
+---
+
+# Combining Categorical Data
+
+df = election_data
+mask = election_data.isin(votes[votes < 200].index)
+election_data[mask] = 'Other'					==> turns the votes value in data frame to others

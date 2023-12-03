@@ -168,4 +168,20 @@ print(dfComplete.head(10))
 
 ```
 
+----
 
+# Normalized
+
+
+
+##min_max_normalize()
+
+scaler = MinMaxScaler()
+normalized_data = scaler.fit_transform(data)
+
+
+
+## standardize data
+
+scaler = StandardScaler()
+standardized_data = scaler.fit_transform(gdp)
