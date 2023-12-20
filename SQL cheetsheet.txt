@@ -138,6 +138,27 @@ CLI:  .schema		output create tables we used
 	ON table2.column = table2.column	**whitch is equal**
 	WHERE table2.column IS NULL;		**show the not selected**
 
+ex (left join 3 table with user id and select columns we need, build a funnel):
+WITH funnels AS (				**create a table**
+  SELECT 
+     DISTINCT b.browse_date,
+     b.user_id,
+     c.user_id IS NOT NULL AS 'is_checkout',
+     p.user_id IS NOT NULL AS 'is_purchase'
+  FROM browse AS 'b'
+  LEFT JOIN checkout AS 'c'
+    ON c.user_id = b.user_id
+  LEFT JOIN purchase AS 'p'
+    ON p.user_id = c.user_id)
+SELECT browse_date,				**select wanted column**
+   COUNT(*) AS 'num_browse',
+   SUM(is_checkout) AS 'num_checkout',		**calculate things we want and create a colunm**
+   SUM(is_purchase) AS 'num_purchase',
+   1.0 * SUM(is_checkout) / COUNT(user_id) AS 'browse_to_checkout',
+   1.0 * SUM(is_purchase) / SUM(is_checkout) AS 'checkout_to_purchase'
+FROM funnels
+GROUP BY browse_date				**group them with date to see what happen in each date**
+ORDER BY browse_date;
 
 
 26. SELECT * FROM table1 			**join all the rows of 2 table**
@@ -158,3 +179,167 @@ CLI:  .schema		output create tables we used
 		.....
 		.....)
     SELECT * .........	
+
+
+
+29. Window Function Syntax
+
+SELECT 
+   month,
+   SUM(change_in_followers) OVER (		**Over is where function began**
+      ORDER BY month
+   ) AS 'running_total'
+FROM
+   social_media
+WHERE
+   username = 'instagram';
+
+
+
+30. PARTITION BY
+
+SELECT 
+    username,
+    AVG(change_in_followers) OVER (
+      PARTITION BY username 			**PARTITION BY allows you to see all of the resultant rows**
+      ORDER BY month
+    ) 'running_avg_followers_change'
+FROM
+    social_media;
+
+
+31. FIRST_VALUE() or LAST_VALUE()
+
+SELECT
+   username,
+   posts,
+   FIRST_VALUE (posts) OVER (
+      PARTITION BY username 
+      ORDER BY posts
+   ) fewest_posts
+FROM
+   social_media;
+
+SELECT
+   username,
+   posts,
+   LAST_VALUE (posts) OVER (
+      PARTITION BY username 
+      ORDER BY posts
+      RANGE BETWEEN UNBOUNDED PRECEDING AND 	**to show us the most posts for a user, we need to specify a frame for our window function.**
+      UNBOUNDED FOLLOWING
+    ) most_posts
+FROM
+    social_media;
+
+
+32. LAG - specified offset which comes before (LAG) or after (LEAD) the current row.
+
+SELECT
+   artist,
+   week,
+   streams_millions,
+   streams_millions - 
+   LAG(streams_millions, 1, 0) OVER (			**get 3 value: column, offset, replace null**
+      ORDER BY week 
+   ) previous_week_streams 
+FROM
+   streams 						**this code gets the before stream and minus the current one **
+
+
+33. LEAD
+
+SELECT
+   artist,
+   week,
+   streams_millions,
+   LEAD(streams_millions, 1) OVER (
+      PARTITION BY artist
+      ORDER BY week
+   ) - streams_millions AS 'streams_millions_change'
+FROM
+   streams;
+
+
+34.ROW_NUMBER : adds a sequential integer number to each row
+
+SELECT 
+   ROW_NUMBER() OVER (
+      ORDER BY streams_millions DESC 
+   ) AS 'row_num', 
+   artist, 
+   week,
+   streams_millions
+FROM
+   streams;
+
+
+35. RANK : when two values are the same, they will have the same rank whereas with ROW_NUMBER they would not.
+
+SELECT 
+   RANK() OVER (
+      ORDER BY streams_millions
+   ) AS 'rank', 
+   artist, 
+   week,
+   streams_millions
+FROM
+   streams;
+
+
+36. NTILE : break your data into roughly equal groups
+
+SELECT 
+   NTILE(5) OVER (
+      ORDER BY streams_millions DESC
+   ) AS 'weekly_streams_group', 
+   artist, 
+   week,
+   streams_millions
+FROM
+   streams;
+
+
+37. ABS() function returns the absolute value of the input expression.
+
+SELECT ABS(-3); -- 3
+
+
+38. CAST() function is used to convert the value of an expression into another data type.
+
+SELECT CAST('3.14 is pi' AS REAL) / 2;
+
+
+39. Date and Time Functions
+
+SELECT DATETIME('now', 'localtime');
+SELECT DATETIME('2020-09-01 17:38:22');
+SELECT DATETIME('2020-02-10', 'start of month', '-1 day', '+7 hours');
+
+
+
+40. STRFTIME()
+
+SELECT STRFTIME('%d', order_date) AS 'order_day',
+  COUNT(*) 
+FROM bakery
+GROUP BY 1
+ORDER BY 2 DESC;
+
+
+41. Compare Funnels For A/B testing
+
+ex:
+SELECT modal_text,
+  COUNT(DISTINCT CASE
+    WHEN ab_group = 'control' THEN user_id
+    END) AS 'control_clicks',
+  COUNT(DISTINCT CASE
+    WHEN ab_group = 'variant' THEN user_id
+    END) AS 'variant_clicks'
+FROM onboarding_modals
+GROUP BY 1
+ORDER BY 1;
+
+
+42. 
