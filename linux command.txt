@@ -1,0 +1,76 @@
+man <command_name> : The man command is used to access the manual pages
+
+gzip or bzip2 or xz [options](-k : retain the original file/-r : create a .zip archive of a directory./ -d : decompressed)   <file_name>
+zip <archive_name>.zip <file1> <file2> …    /     unzip <archive_name>.zip
+tar -cf <archive_name>.tar <files or directories>    /	tar -xf <archive_name>.tar	+(-z: .tar.gz/-j: .tar.bz2/ -J: .tar.xz)
+
+curl or wget <URL in quotes> 
+curl -O "https://www.google.com" --output frontpage.html  (download and save html file of target)
+
+
+
+
+
+BASH
+
+greeting="Hello" (set variables)
+echo $greeting    (printing variables)
+
+./tree.sh ~         	prints the directory structure of the current directory
+
+
+output directories with indent :    ( ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'  )
+
+
+if [ $index -lt 5 ]
+then
+  echo $index
+else
+  echo 5
+fi
+
+
+
+for filename in source/*
+do
+    echo $filename
+done
+
+
+while [ $index -lt 5 ]
+do
+  echo $index
+  index=$((index + 1))
+done
+
+
+
+until [ $index -eq 5 ]
+do
+  echo $index
+  index=$((index + 1))
+done
+
+
+
+Equal: -eq
+Not equal: -ne
+Less than or equal: -le
+Less than: -lt
+Greater than or equal: -ge
+Greater than: -gt
+Is null: -z
+
+Equal: ==    (if [ "$foo" == "$bar" ])
+Not equal: !=
+
+
+
+echo "Guess a number"
+read number    		(prompting the user for input)
+echo "You guessed $number"
+
+read var1    (let user type something and put into var1)
+read -a bar <<< $foo   (splitting a string foo into an array bar)
+
+head -n 1 source/changelog.md    (print 1 line of change log)
