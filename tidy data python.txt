@@ -168,6 +168,41 @@ print(dfComplete.head(10))
 
 ```
 
+---
+
+#Linear Interpolation
+
+
+```
+import numpy as np
+
+x = [2015]
+xp = [2000,2005,2010,2020]
+yp = [1000000,1157018,1238120,1682971]
+
+y = np.interp(x, xp, yp)
+
+# y = 1460545.50
+```
+
+OR
+
+```
+from scipy.interpolate import interp1d
+  
+x = [2000,2005,2010,2020]
+y = [1000000,1157018,1238120,1682971]
+
+x_value = 2015
+
+# Finding the interpolation line
+interp_line = interp1d(x, y)
+
+y_value = interp_line(x_value)
+
+# y_value = 1460545.50
+```
+
 ----
 
 # Normalized
