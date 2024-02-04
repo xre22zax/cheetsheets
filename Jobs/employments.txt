@@ -1,0 +1,35 @@
+Tableau
+Power BI
+ETL
+T-SQL
+PyTorch
+SPSS
+R
+ERP
+data mining
+metadata
+data integrity and normalization
+Postgre
+Oracle
+DAX (Data Analysis Expressions)
+GCP
+AWS
+Azure
+
+
+
+business analysts, and stakeholders from various departments
+quality assurance analysts
+stakeholders to assess potential risks
+ propose system modifications
+commercial data for the B2B
+customer behavior
+pricing strategies
+customer needs
+commercial strategy
+buying patterns
+Managing users and user roles
+product performance
+market trends
+inventory manageme
+Manage users and user roles
