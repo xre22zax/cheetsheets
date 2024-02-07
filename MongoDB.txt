@@ -1,0 +1,83 @@
+#MongoDB is a NoSQL document database. This means that data entries in the database are stored inside documents within collections.
+
+#Choosing to use MongoDB has some key benefits:
+- Flexibility and Scalability
+- Developer Friendly
+- Diverse Cloud Tooling
+
+
+#JSON’s usefulness as a format for data comes primarily from the ease with which users can view and modify it. Data is stored in an easily editable format that is totally comprehensible to humans as well as our computers. It can be changed fairly easily with little fuss. However, it has several disadvantages, including slow performance, poor storage efficiency, and limited data types.
+
+#Data modeling is the practice of developing an organizational structure for the data in our database.
+- Embedded documents and references are two of the most common ways to model data. These two methods help define the relationships between the data in collections.
+	- Reference-based data models are normalized; they use links inside of the data (typically via the _id field) to create relationships.
+	- Embedded data models are denormalized; they use nested documents inside of collections to create relationships.
+
+#commands 
+show dbs
+use db_name
+
+-- There are four essential functions that a persistent database must be able to perform: create new data entries, and read, update and delete existing entries. We can summarize these four operations with the acronym CRUD.
+
+
+##Find
+
+db.<collection>.find()					==> return up to the first set of matching documents
+
+it							==> iyrate trough current list
+
+db.auto_makers.find({ country: "Japan" });		==> find all of the vehicles that are manufactured in "Japan"
+
+```
+db.listingsAndReviews.find({ borough: "Brooklyn", cuisine: "Caribbean" }
+```
+
+db.auto_makers.find({ "models.name" : "Pilot" })	==> Fninds the name array in model field
+
+db.auto_makers.find( <field>: {$eq: <value> })		==>  $eq (equal), to match documents that include the specified field and value.
+
+db.national_parks.find({ founded: { $gt: 1900 }});	==> Find parks founded after 1900, $gt (graeter than), $gte (greater and equal)
+
+db.national_parks.find({ founded: { $lt: 1900 }});	==> Find parks founded before 1900, $lt (less than operator), $lte (less and equal)
+
+db.books.find({ genres: ["young adult", "fantasy"] })	==> array fields for exact matches
+
+db.books.find({ genres: { $all: [ "science fiction", "adventure" ] } })
+
+db.listingsAndReviews.find({ michelin_stars: { $gt: 2015, $lt: 2010 } })
+
+db.listingsAndReviews.find({ michelin_stars: { $elemMatch: { $gte: 2005, $lte: 2010 } } })	==> matches documents that contain an array field with at least one element that matches all the specified query criteria.
+
+db.listingsAndReviews.find({ grades: {date: ISODate("2014-07-11T00:00:00.000Z"), grade: 'A', score: 8} })	==> find a exact  subsequence list in a field
+
+
+##Sort
+
+db.records.find().sort({ "release_year": 1,  "artist": 1 });		==> Sort  record by first realease and then artists ascending
+
+```
+db.listingsAndReviews.find({borough: "Queens"}).sort({"address.zipcode": -1})
+```
+
+##projections 
+
+db.listingsAndReviews.find({borough: "Bronx"}, { _id: 1, name: 1, cuisine: 1, address: 0, grades: 0 })		==> 0 is exclude and 1 is includes
+
+
+!!!!
+The .count() method returns the number of documents that match a query.
+The .limit() method can be chained to the .find() method, and specifies the maximum number of documents a query will output.
+The $exists operator can be included in a query filter to only match documents that contain the given field.
+The $ne operator helps check if a field is not equal to a specified value.
+The $and and $or operators help perform AND or OR logic operators.
+The $size operator is used with .find() to match any array with the specified number of elements.
+The $in operator can be included in queries to match documents where the field is an array that contains at least one element in the specified array.
+The $nin operator can be included in queries to match documents where the field is an array that contains no elements mentioned in the given array.
+Lastly, if you are looking for a way to make query outputs look a bit more “pretty”, you can use the .pretty()
+!!!
+
+
+
+
+
+

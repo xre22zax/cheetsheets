@@ -11,6 +11,9 @@ webpage = requests.get('https://www.codecademy.com/articles/http-requests')
 print(webpage.text)
 
 ##Get diffrent part of codes
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(webpage.content, "html.parser")
+
 soup = BeautifulSoup('<div id="example">An example div</div><p>An example p tag</p>')
 print(soup.div)		==> <div id="example">An example div</div>
 print(soup.div.name)	==> div
