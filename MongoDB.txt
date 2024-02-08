@@ -13,11 +13,24 @@
 	- Reference-based data models are normalized; they use links inside of the data (typically via the _id field) to create relationships.
 	- Embedded data models are denormalized; they use nested documents inside of collections to create relationships.
 
+
+#Indexing
+Indexes are data structures that capture a subset of a collection’s data in an easy to traverse form.
+Indexes can support more efficient queries of large collections.
+Single field indexes reference one field from a document, while compound indexes reference multiple fields.
+The primary advantage of indexes is that they support faster queries. The greatest tradeoff of indexes is that they can marginally decrease write performance.
+
+
+---
+
+
 #commands 
 show dbs
 use db_name
+show collections
 
--- There are four essential functions that a persistent database must be able to perform: create new data entries, and read, update and delete existing entries. We can summarize these four operations with the acronym CRUD.
+
+--- There are four essential functions that a persistent database must be able to perform: create new data entries, and read, update and delete existing entries. We can summarize these four operations with the acronym CRUD.
 
 
 ##Find
@@ -51,6 +64,9 @@ db.listingsAndReviews.find({ michelin_stars: { $elemMatch: { $gte: 2005, $lte: 2
 db.listingsAndReviews.find({ grades: {date: ISODate("2014-07-11T00:00:00.000Z"), grade: 'A', score: 8} })	==> find a exact  subsequence list in a field
 
 
+---
+
+
 ##Sort
 
 db.records.find().sort({ "release_year": 1,  "artist": 1 });		==> Sort  record by first realease and then artists ascending
@@ -59,9 +75,63 @@ db.records.find().sort({ "release_year": 1,  "artist": 1 });		==> Sort  record b
 db.listingsAndReviews.find({borough: "Queens"}).sort({"address.zipcode": -1})
 ```
 
+---
+
+
 ##projections 
 
 db.listingsAndReviews.find({borough: "Bronx"}, { _id: 1, name: 1, cuisine: 1, address: 0, grades: 0 })		==> 0 is exclude and 1 is includes
+
+
+---
+
+##Inserting
+
+db.listingsAndReviews.insertOne({ name: "Elvins", cuisine: "American", restaurant_id: "40564243" })
+
+db.listingsAndReviews.findOne({ restaurant_id: "40564243" })
+
+db.listingsAndReviews.insertMany([ { name: "Boucherie", borough: "Manhattan", cuisine: "American", restaurant_id: "49246215" }, { name: "Carmines", borough: "Manhattan", cuisine: "Italian", restaurant_id: "48259401" }], { ordered: true })
+
+---
+
+##Updating
+Article: https://www.mongodb.com/docs/manual/reference/operator/update/#std-label-update-operators/?utm_campaign=academia_partners&utm_source=codecademy&utm_medium=referral
+
+db.listingsAndReviews.updateOne({ restaurant_id: "50014008" }, { $set: { cuisine: "American" } })	==> Update cuisine to america
+
+db.listingsAndReviews.updateOne({ restaurant_id: "40561796" }, { $set: { "address.street": "58 street" } })
+
+db.nbateams.updateOne({ team: "Chicago Bulls" }, { $set: { "championships.1": 1992 } })			==> for choosing from an array within
+
+db.paintings.updateMany({ style: "abstract" },{ $set: { status: "sold" } })
+
+###Push 
+db.listingsAndReviews.updateOne({ name: "Cafe Bar" }, { $push: { grades: { date: new Date(), grade: "B", score: 81 } } })
+
+b.listingsAndReviews.updateOne({ name: "Vinnys" }, { $set: { borough: "Queens", cuisine: "Italian" } }, { upsert: true })	==> upsert check if it dosent exist add new one and if it does update it
+
+db.listingsAndReviews.updateMany({ borough: "Bronx"}, { $set: { borough: "Staten Island"} })
+
+db.listingsAndReviews.findAndModify({ query: { name: "Jolie Cantina" }, update: { cuisine: "American" }, new: true })		==>  method can return the updated document, whereas the updateOne can not
+
+
+--- 
+
+##Delete
+
+db.listingsAndReviews.deleteOne({ name: "Wakamba" });
+
+db.listingsAndReviews.deleteMany({ borough: "Rhode Island" })
+
+---
+
+##Replace
+
+db.listingsAndReviews.replaceOne({ name: "Tasty House" }, { name: "Tasty House", shut_down: true })
+
+
+
 
 
 !!!!
@@ -73,6 +143,11 @@ The $and and $or operators help perform AND or OR logic operators.
 The $size operator is used with .find() to match any array with the specified number of elements.
 The $in operator can be included in queries to match documents where the field is an array that contains at least one element in the specified array.
 The $nin operator can be included in queries to match documents where the field is an array that contains no elements mentioned in the given array.
+The ordered parameter can be provided to the .insertMany() method. It accepts a boolean value, and, if set to false, will insert the documents in an unordered format to increase performance.
+The $unset operator can be provided to the .updateOne() or .updateMany() method. It removes a particular field from a document.
+The .findOneAndUpdate() method is similar to .updateOne(), but instead of returning a document acknowledging the success or failure of our operation, it returns either the original or updated document.
+The .renameCollection() method allows us to update the name of our collection without modifying any of its documents.
+The .bulkWrite() method allows us to perform multiple write operations (updating or inserting) with controls for order of execution.
 Lastly, if you are looking for a way to make query outputs look a bit more “pretty”, you can use the .pretty()
 !!!
 
