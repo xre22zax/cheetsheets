@@ -21,6 +21,17 @@ Single field indexes reference one field from a document, while compound indexes
 The primary advantage of indexes is that they support faster queries. The greatest tradeoff of indexes is that they can marginally decrease write performance.
 
 
+
+#When to Use Aggregation
+
+- There are no CRUD methods (or a combination of methods) that accomplishes the query that needs to be performed easily.
+- We need to perform analysis on datasets such as grouping values from multiple documents, computations on data, and analyzing data changes over time.
+
+
+
+
+
+
 ---
 
 
@@ -129,6 +140,71 @@ db.listingsAndReviews.deleteMany({ borough: "Rhode Island" })
 ##Replace
 
 db.listingsAndReviews.replaceOne({ name: "Tasty House" }, { name: "Tasty House", shut_down: true })
+
+
+---
+
+
+##Explaine
+db.listingsAndReviews.find({name: "Osaka Japanese Fusion"}).explain("executionStats")	==> The possible values are: "queryPlanner", "executionStats", and "allPlansExecution".
+
+
+##Indexing				==> anytime we query on these two fields, MongoDB will automatically employ this index to support our search.
+
+db.listingsAndReviews.createIndex({borough: 1})
+
+db.listingsAndReviews.createIndex({borough: 1, cuisine: -1})		==> If we wanted to index both the in an array fields, we’d have to create two separate indexes for them.
+
+db.listingsAndReviews.getIndexes();
+
+db.listingsAndReviews.dropIndex("borough_1")
+
+https://www.mongodb.com/docs/manual/core/indexes/index-properties/
+
+
+---
+
+
+##aggregate
+
+db.<collection>.aggregate()
+
+db.movies.aggregate([{ $match: {rating: "R"} } ])			==>returns all the documents containing the specified field and value
+
+
+##pipeline aggregation
+
+db.students.aggregate([
+  {
+    // First stage
+    $match: {grade_level: 6, average_test_score: {$gt: 97}}
+  },
+  { 
+    // Second Stage
+    $sort: { first_name: 1} 
+  },
+  { 
+    // Third Stage
+    $addFields:  {
+      highest_score: { $max: "$test_scores" }  
+    }
+  },
+  {
+    // Fourth Stage: our aggregation result would be plopped into a new collection named candidates
+    $out : "candidates"				
+  }
+])
+
+
+
+
+
+
+
+
+
+
+
 
 
 

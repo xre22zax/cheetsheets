@@ -1,9 +1,12 @@
-Tableau
-Power BI
-ETL
 T-SQL
 PyTorch
+ETL
+Oracle
+Oracle BI
 SPSS
+SSIS
+SSRS
+SSAS
 R
 ERP
 data mining
@@ -15,7 +18,8 @@ DAX (Data Analysis Expressions)
 GCP
 AWS
 Azure
-
+Tableau
+Power BI
 
 
 business analysts, and stakeholders from various departments
