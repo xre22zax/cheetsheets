@@ -1,0 +1,48 @@
+#Operators
+
+https://www.codecademy.com/resources/docs/r/operators
+
+---
+
+
+##vactor (combine function)
+
+spring_months <- c("March", "April","May","June")
+
+typeof(vector_name)
+length(vector_name)
+vector_name[2]
+
+---
+
+
+#if
+
+if (day == 'Saturday' | day == 'Sunday') {
+  print('Enjoy the weekend!')
+} else {
+  print('Do some work.')
+}
+
+
+---
+
+
+# Function
+
+sort(c(2,4,10,5,1)); 
+length(c(2,4,10,5,1)); 
+sum(5,15,10) 
+unique(c(2,4,2,5,1))
+sqrt(49)
+round_down <- floor(3.14)
+round_up <- ceiling(3.14)
+
+
+---
+
+
+#Packages
+
+install.packages('package-name')
+library(package-name)
