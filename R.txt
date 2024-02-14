@@ -2,6 +2,15 @@
 
 https://www.codecademy.com/resources/docs/r/operators
 
+
+###R-studio
+shortkey
+<-	==>  'alt'+'-'
+run	==> 'ctrl + enter
+
+
+
+
 ---
 
 
@@ -46,3 +55,7 @@ round_up <- ceiling(3.14)
 
 install.packages('package-name')
 library(package-name)
+
+in terminal
+?install.packages	==> get you documentaion about your search
+??install		==> search for all the commen names for your seaerch in help
