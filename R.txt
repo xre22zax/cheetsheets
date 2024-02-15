@@ -46,6 +46,7 @@ unique(c(2,4,2,5,1))
 sqrt(49)
 round_down <- floor(3.14)
 round_up <- ceiling(3.14)
+typeof(cities)
 
 
 ---
@@ -59,3 +60,151 @@ library(package-name)
 in terminal
 ?install.packages	==> get you documentaion about your search
 ??install		==> search for all the commen names for your seaerch in help
+
+
+---
+
+#Vectors
+vectors are one-dimensional, meaning they have just one length.
+
+one_thru_ten <- c(1:10)
+intervals <- seq(3, 5, by = 0.5)		==> seq(start_number, end_number, by = interval_size)
+
+###get vector item
+example_vector <- c("I", "have", "several", "items", "inside", "me") 
+example_vector[1]	 	# gets the first element "I"
+example_vector[c(3, 5)]		# output: [1] "several" "inside" 
+example_vector[c(1:4)]		# output: [1] "I" "have" "several" "items"
+
+###change an element
+change_me <- c(7, 11, -28, 32, 5, 19)
+change_me[2] <- 7					==> # sets second element to 7
+change_me[change_me > 0 & change_me < 10] <- 0		==> # output: [1]  0  11 -28  32   0
+change_me <- change_me[2:4]				==> # output: [1]  11 -28  32
+
+
+---
+
+# Matrix 
+A matrix (plural: matrices) is a 2-D data structure that holds elements of the same type
+
+
+abc_repeat <- matrix(c("a", "b", "c"), nrow = 3, ncol = 4)
+
+# output:
+     [,1] [,2] [,3] [,4]
+[1,] "a"  "a"  "a"  "a" 
+[2,] "b"  "b"  "b"  "b" 
+[3,] "c"  "c"  "c"  "c" 
+
+
+
+eight_matrix <- matrix(c(1:8), nrow = 3, ncol = 4)
+
+# output:
+     [,1] [,2] [,3] [,4] 
+[1,]    1    4   7   2  
+[2,]    2    5   8   3  
+[3,]    3    6   1   4   
+
+
+###select items
+eight_matrix[2,3]		==> output = 8
+eight_matrix[,3]		==> grab entire column
+eight_matrix[2,]		==> grab entire row
+
+
+---
+
+
+#Lists 
+
+My_list <- list("Elephant", 900, 80.3, list("pencil", "pens"))
+my_list[[3]] <- 85.2
+
+
+test_scores <- list(
+  Penny = list(exam1 = 84, exam2 = 79, exam3 = 85),
+  Nick = list(exam1= 77, exam2 = 81, exam3 = 83),
+  Kiara = list(exam1 = 92, exam2 = 89, exam3 = 87)
+)
+
+print(test_scores$Kiara)
+$exam1
+[1] 92
+$exam2
+[1] 89
+$exam3
+[1] 87
+
+> test_scores$Kiara$exam1
+[1] 92
+
+
+
+
+---
+
+#IF
+
+```
+number_of_students <- 88
+funding <- 30000
+amount_per_student <- funding / number_of_students
+
+if (amount_per_student >= 500) {
+   print("We have enough funding for each student!")
+} else if (amount_per_student < 500 & amount_per_student >= 400) {
+   print("We cannot afford stationery and planners for students.")
+} else if (amount_per_student < 400 & amount_per_student >= 300) {
+   print("We cannot afford stationery, planners, and have to cut down on printing.")
+} else {
+   print("We're lacking funds this year.")
+}
+```
+
+
+---
+
+
+#For 
+
+for (i in 1:20) {
+     print("Hello")}
+
+
+my_vector <- c("this", "vector", "is", "being", "read", "by", "a", "for", "loop")
+for(word in my_vector){
+  print(word)
+}
+
+
+
+for (row in 1:nrow(a_matrix)) {
+    for (col in 1:ncol(a_matrix)) {
+        print(a_matrix[row, col])
+    }
+}
+
+
+
+---
+
+
+
+#while
+
+number_of_heads <- 0
+heads_goal <- 5
+coin <- c("heads", "tails")
+
+while (number_of_heads < heads_goal) {
+  # flip the coin (random)
+  result <- sample(coin, 1)
+  print(result)
+  if (result == "heads") {
+    number_of_heads <- number_of_heads + 1
+  }
+}
+
+
