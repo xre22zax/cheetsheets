@@ -3,10 +3,13 @@ PyTorch
 ETL
 Oracle
 Oracle BI
+SAP
 SPSS
 SSIS
 SSRS
 SSAS
+spark
+Cassandra
 R
 ERP
 data mining
