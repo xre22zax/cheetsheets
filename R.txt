@@ -284,6 +284,29 @@ percentages_lapply <- lapply(decimals, turn_to_percent)
 ```
 
 cheet sheet : https://www.codecademy.com/learn/paths/analyze-data-with-r/tracks/introduction-to-programming-in-r/modules/intro-to-programming-in-r/cheatsheet
+
+
+
+---
+
+
+
+##Convert list to data frame
+
+distination_df <- as.data.frame(possible_destination)
+
+
+---
+
+
+
+##mean median and mode
+
+mean(example_data)
+
+
+
+
 ---
 
 
