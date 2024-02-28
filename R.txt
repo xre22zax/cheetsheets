@@ -300,13 +300,56 @@ distination_df <- as.data.frame(possible_destination)
 
 
 
-##mean median and mode
+##
+Mean: Overall "average" considering all values, but sensitive to outliers.
+Median: Representative of the "middle" value, less affected by outliers.
+Mode: Identifies the most common value, useful for specific peaks or categories.
 
 mean(example_data)
 
+median(example_data)
+
+
+library(DescTools)
+Mode(example_data)
+
+---
+
+
+#variance & std
+
+var <- variance(dataset)
+num_square_root <- num ^ 0.5
+standard_deviation <- sd(dataset)
+
+
+```
+monthly_stats <- london_data %>%
+    group_by(month) %>%
+    summarize(mean = mean(TemperatureC),
+              standard_deviation = sd(TemperatureC))
+```
+
+
+#quartile
+
+third_quartile <- quantile(dataset, 0.75)
+ten_percent <- quantile(dataset, c(0.2, 0.4, 0.6, 0.8))
+
+#interquartile range
+
+interquartile_range <- q3 - q1
+interquartile_range = IQR(dataset)
 
 
 
 ---
 
 
+
+#know the data
+
+head(london_data)
+nrow(london_data)
+
+single_column <- data_frame_name %>% pull(column_name)			-->convert the data frame column into a vector
