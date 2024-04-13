@@ -1,6 +1,12 @@
 T-SQL
-PyTorch
 ETL
+data mining
+metadata
+data intgrity and normalization
+R
+SPSS
+ERP
+DAX (Data Analysis Expressions)
 Oracle
 Oracle BI
 SAP
@@ -10,14 +16,8 @@ SSRS
 SSAS
 spark
 Cassandra
-R
-ERP
-data mining
-metadata
-data integrity and normalization
+
 Postgre
-Oracle
-DAX (Data Analysis Expressions)
 GCP
 AWS
 Azure

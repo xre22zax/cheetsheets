@@ -353,3 +353,8 @@ head(london_data)
 nrow(london_data)
 
 single_column <- data_frame_name %>% pull(column_name)			-->convert the data frame column into a vector
+
+
+---
+
+

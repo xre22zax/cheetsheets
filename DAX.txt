@@ -1,0 +1,11 @@
+- Create Date table
+
+dim_date = ADDCOLUMNS(CALENDAR(MIN(fact_InternetSales[ShipDate]), MAX(fact_InternetSales[ShipDate])),
+"Year", FORMAT([Date], "YYYY"),
+"Month", MONTH([Date]),
+"MonthName", FORMAT([Date], "MMMM"),
+"DayOfWeek", WEEKDAY([Date],2),
+"Quarter", FORMAT([Date], "Q"),
+"YearQuarter", "Q"&FORMAT([Date], "Q")&"/"&FORMAT([Date], "YYYY"))
+
+
