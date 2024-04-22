@@ -1,0 +1,115 @@
+https://www.thedataschool.co.uk/jaroslav-tomcala/dax-cheat-sheet/
+
+
+Aggregation Functions:
+SUM(<column>) : Calculates the sum of values in a column.
+
+AVERAGE(<column>) : Calculates the average of values in a column.
+
+MIN(<column>) : Finds the minimum value in a column.
+
+MAX(<column>) : Finds the maximum value in a column.
+
+COUNT(<column>) : Counts non-blank values in a column.
+
+COUNTA(<column>) : Counts non-blank and non-empty values in a column.
+
+COUNTBLANK(<column>) : Counts blank values in a column.
+
+DISTINCTCOUNT(<column>) : Counts unique values in a column.
+
+PRODUCT(<column>) : Calculates the product of values in a column.
+
+
+Text Functions:
+CONCATENATE(<text1>, <text2>) : Combines two text values into a single text value.
+
+LEFT(<text>, <num_chars>) : Returns the left portion of a text string.
+
+RIGHT(<text>, <num_chars>) : Returns the right portion of a text string.
+
+MID(<text>, <start_num>, <num_chars>) : Returns a specific portion of a text string.
+
+LEN(<text>) : Returns the length of a text string.
+
+LOWER(<text>) : Converts text to lowercase.
+
+UPPER(<text>) : Converts text to uppercase.
+
+TRIM(<text>) : Removes leading and trailing spaces from text.
+
+SUBSTITUTE(<text>, <old_text>, <new_text>, [<occurrence>]) : Replaces occurrences of a substring in text.
+
+
+Logical Functions:
+IF(<condition>, <true_result>, <false_result>) : Returns one value if a condition is true and another if false.
+
+AND(<condition1>, <condition2>, ...) : Returns true if all conditions are true.
+
+OR(<condition1>, <condition2>, ...) : Returns true if at least one condition is true.
+
+NOT(<condition>) : Returns the opposite of a logical value.
+
+
+Date and Time Functions:
+TODAY() : Returns the current date.
+
+NOW() : Returns the current date and time.
+
+YEAR(<date>) : Returns the year of a date.
+
+MONTH(<date>) : Returns the month of a date.
+
+DAY(<date>) : Returns the day of a date.
+
+HOUR(<datetime>) : Returns the hour of a datetime.
+
+MINUTE(<datetime>) : Returns the minute of a datetime.
+
+SECOND(<datetime>) : Returns the second of a datetime.
+
+DATE(<year>, <month>, <day>) : Creates a date from year, month, and day values.
+
+TIME(<hour>, <minute>, <second>) : Creates a time from hour, minute, and second values.
+
+
+Table Functions:
+FILTER(<table>, <condition>) : Returns a table filtered by a condition.
+
+ALL(<table | column>) : Removes filters/slicers from a table/column.
+
+VALUES(<table | column>) : Returns a table of unique values in a table/column.
+
+SUMMARIZE(<table>, <column>, [<aggregation>]) : Creates a summary table with grouped data.
+
+
+Statistical Functions:
+STDEV.P(<column>) : Calculates the standard deviation of a population. Ignores logical values and text.
+
+STDEV.S(<column>) : Calculates the standard deviation of a sample. Ignores logical values and text in a sample.
+
+VAR.P(<column>) : Calculates the variance of a population. Ignores logical values and text.
+
+VAR.S(<column>) : Calculates the variance of a sample. Ignores logical values and text in a sample.
+
+MEDIAN(<column>) : Calculates the median of values in a column.
+
+
+Time Intelligence Functions:
+DATESYTD(<date_column>, [<end_date>]) : Calculates year-to-date total.
+
+TOTALYTD(<expression>, <date_column>, [<end_date>]) : Calculates year-to-date for an expression.
+
+SAMEPERIODLASTYEAR(<date_column>) : Returns the same period in the previous year.
+
+DATESBETWEEN(<date_table>, <start_date>, <end_date>) : Returns dates in a specified range.
+
+
+Information Functions:
+ISBLANK(<value>) : Returns true if a value is blank.
+
+ISNUMBER(<value>) : Returns true if a value is a number.
+
+ISTEXT(<value>) : Returns true if a value is text.
+
+ISDATE(<value>) : Returns true if a value is a date.
